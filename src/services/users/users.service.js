@@ -7,10 +7,12 @@ const filters = require('./users.filters');
 module.exports = function () {
   const app = this;
   const Model = createModel(app);
+  const paginate = app.get('paginate');
 
   const options = {
     name: 'users',
     Model,
+    paginate
   };
 
   // Initialize our service with any options it requires

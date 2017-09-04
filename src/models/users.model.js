@@ -5,15 +5,10 @@ const Sequelize = require('sequelize');
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const users = sequelizeClient.define('users', {
-    id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    name: {
-      type: Sequelize.STRING,
-      allowNull: true
-    }
+  
+  
+    facebookId: { type: Sequelize.STRING },
+  
   }, {
     hooks: {
       beforeCount(options) {

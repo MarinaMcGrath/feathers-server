@@ -2,5 +2,50 @@
   "host": "localhost",
   "port": 3030,
   "public": "../public/",
-  "postgres": "postgres://postgres:@localhost:5432/feathers_server"
+  "postgres": "postgres://postgres:@localhost:5432/feathers_server",
+  "authentication": {
+    "secret": "7ab74c23a88426613640ce7d82fb0d626912b26c67358af14cb987fd88cff2dca8f6a2cae55fdfe8052d335cd49b68c957f02985db45fb76fd9eea52c76283f0e1db04a4b82bb1e9815c0b54b972aa96a39951caeed890ff5ceb6aa767eb34f6cb98aab6c5e1bfb3cdb42447ba5455b6fbedb2e5ddf52835b1f907a529305a3bb1157d823a401f838bd97c0728fa6215be1bef5c1f240655c23831fbcc2cfcd677c346b335ad872ef876833b6b9049c4ec9c55035340013cca91f62613988fb9c8fb6aded4c9e24267480692cf49adebdee5eb0c1e6e327dffbaff01ca7264716f38995883e023eb6edd21bafee05d4b5d5b20ba364dbe64e680f717be6c141c",
+    "strategies": [
+      "jwt"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "facebook": {
+      "clientID": "your facebook client id",
+      "clientSecret": "your facebook client secret",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  }
 }
